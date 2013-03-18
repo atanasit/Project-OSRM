@@ -22,12 +22,14 @@ or see http://www.gnu.org/licenses/agpl.txt.
 #define GRIDEDGE_H_
 
 #include "Coordinate.h"
+#include "TravelMode.h"
 
 struct _GridEdge {
-    _GridEdge(NodeID n, NodeID na, int w, _Coordinate sc, _Coordinate tc, bool bttc) : edgeBasedNode(n), nameID(na), weight(w), startCoord(sc), targetCoord(tc), belongsToTinyComponent(bttc) {}
-    _GridEdge() : edgeBasedNode(UINT_MAX), nameID(UINT_MAX), weight(INT_MAX), belongsToTinyComponent(false) {}
+    _GridEdge(NodeID n, NodeID na, int w, _Coordinate sc, _Coordinate tc, bool bttc, TravelMode _mode) : edgeBasedNode(n), nameID(na), weight(w), startCoord(sc), targetCoord(tc), belongsToTinyComponent(bttc), mode(_mode) {}
+    _GridEdge() : edgeBasedNode(UINT_MAX), nameID(UINT_MAX), weight(INT_MAX), belongsToTinyComponent(false), mode(0) {}
     NodeID edgeBasedNode;
     NodeID nameID;
+    TravelMode mode;
     int weight;
     _Coordinate startCoord;
     _Coordinate targetCoord;

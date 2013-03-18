@@ -24,7 +24,7 @@ rescue Timeout::Error
 end
 
 def request_route a,b, params={}
-  defaults = { 'output' => 'json', 'instructions' => true, 'alt' => true }
+  defaults = { 'output' => 'json', 'instructions' => true, 'alt' => false }
   request_path "viaroute?loc=#{a}&loc=#{b}", defaults.merge(params)
 end
 

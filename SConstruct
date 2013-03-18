@@ -292,7 +292,7 @@ if not conf.CheckCXXHeader('boost/unordered_map.hpp'):
 
 env.Program(target = 'osrm-extract', source = ["extractor.cpp", Glob('Util/*.cpp'), Glob('Extractor/*.cpp')])
 env.Program(target = 'osrm-prepare', source = ["createHierarchy.cpp", Glob('Contractor/*.cpp'), Glob('Util/SRTMLookup/*.cpp'), Glob('Algorithms/*.cpp')])
-env.Program(target = 'osrm-routed', source = ["routed.cpp", 'Descriptors/DescriptionFactory.cpp', Glob('ThirdParty/*.cc'), Glob('Server/DataStructures/*.cpp')], CCFLAGS = env['CCFLAGS'] + ['-DROUTED'])
+env.Program(target = 'osrm-routed', source = ["routed.cpp", 'Descriptors/DescriptionFactory.cpp', Glob('ThirdParty/*.cc'), Glob('Server/DataStructures/*.cpp'), Glob('DataStructures/*.cpp')], CCFLAGS = env['CCFLAGS'] + ['-DROUTED'])
 if GetOption('withtools') is not None:
 	env.Program(target = 'Tools/osrm-component', source = ["Tools/componentAnalysis.cpp"])
 env = conf.Finish()

@@ -69,7 +69,7 @@ public:
 
             middle1 = UINT_MAX;
             middle2 = UINT_MAX;
-
+            
             //insert new starting nodes into forward heap, adjusted by previous distances.
             if(searchFrom1stStartNode) {
                 forward_heap1.Insert(phantomNodePair.startPhantom.edgeBasedNode, -phantomNodePair.startPhantom.weight1, phantomNodePair.startPhantom.edgeBasedNode);
@@ -165,7 +165,7 @@ public:
                     if(*(packedPath1.end()-1) != *(temporaryPackedPath1.begin())) {
                         packedPath1.swap(packedPath2);
                         std::swap(distance1, distance2);
-                    }
+                     }
                 }
             }
             packedPath1.insert(packedPath1.end(), temporaryPackedPath1.begin(), temporaryPackedPath1.end());
@@ -185,9 +185,16 @@ public:
         if(distance1 > distance2){
             std::swap(packedPath1, packedPath2);
         }
+        
+        // TODO
+        // need to pick either phantomNodesVector.front().startPhantom.mode1 or .mode2, 
+        // depending on which direction of the start edge produced a route
+        
+        
         remove_consecutive_duplicates_from_vector(packedPath1);
         super::UnpackPath(packedPath1, rawRouteData.computedShortestPath);
         rawRouteData.lengthOfShortestPath = std::min(distance1, distance2);
+        
         return;
     }
 };
